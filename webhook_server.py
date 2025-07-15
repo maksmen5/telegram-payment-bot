@@ -10,12 +10,6 @@ from config import BOT_TOKEN, COURSES, CHANNELS, MERCHANT_ACCOUNT, MERCHANT_SECR
 bot = telebot.TeleBot(BOT_TOKEN)
 app = Flask(__name__)
 
-import telebot
-bot = telebot.TeleBot("твій_токен")
-bot.remove_webhook()
-bot.set_webhook("https://telegram-payment-bot-v0hn.onrender.com/webhook")
-
-
 # Стартове меню
 @bot.message_handler(commands=['start'])
 def start(message):
