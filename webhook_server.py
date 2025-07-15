@@ -7,8 +7,8 @@ from urllib.parse import urlencode
 
 from config import BOT_TOKEN, COURSES, CHANNELS, MERCHANT_ACCOUNT, MERCHANT_SECRET_KEY
 
-bot = telebot.TeleBot(BOT_TOKEN)
 app = Flask(__name__)
+bot = telebot.TeleBot("7915072837:AAEa8tNscTu-bPdQr0lpCBO68vaVkhiSBus")
 
 # Стартове меню
 @bot.message_handler(commands=['start'])
