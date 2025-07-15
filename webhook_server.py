@@ -10,6 +10,13 @@ from config import BOT_TOKEN, COURSES, CHANNELS, MERCHANT_ACCOUNT, MERCHANT_SECR
 bot = telebot.TeleBot(BOT_TOKEN)
 app = Flask(__name__)
 
+@app.route('/webhook', methods=['POST'])
+def webhook():
+    json_str = request.get_data().decode('utf-8')
+    update = telebot.types.Update.de_json(json_str)
+    bot.process_new_updates([update])
+    return '', 200
+
 # Стартове меню
 @bot.message_handler(commands=['start'])
 def start(message):
