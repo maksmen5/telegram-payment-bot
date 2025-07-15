@@ -6,6 +6,18 @@ import base64
 from urllib.parse import urlencode
 
 from config import BOT_TOKEN, COURSES, CHANNELS, MERCHANT_ACCOUNT, MERCHANT_SECRET_KEY
+import logging
+
+logging.basicConfig(level=logging.INFO)
+
+@app.route('/webhook', methods=['POST'])
+def webhook():
+    logging.info(f"Webhook received: {request.data}")
+    update = telebot.types.Update.de_json(request.stream.read().decode("utf-8"))
+    bot.process_new_updates([update])
+    return "ok", 200
+
+
 
 app = Flask(__name__)
 bot = telebot.TeleBot("7915072837:AAEa8tNscTu-bPdQr0lpCBO68vaVkhiSBus")
